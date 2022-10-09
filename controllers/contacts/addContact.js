@@ -9,7 +9,8 @@ const addContact = async (req, res) => {
         throw RequestError(400, error.message);
     };
 
-    const data = await Contact.create(req.body);
+    const { _id: owner } = req.user;
+    const data = await Contact.create({ ...req.body, owner });
     res.status(201).json(data);
 };
 
