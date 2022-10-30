@@ -7,6 +7,10 @@ const { authenticate, upload } = require('../../middlewares');
 
 router.post('/signup', controllerWrapper(controller.signup));
 
+router.get('/verify/:verificationToken', controllerWrapper(controller.verify));
+
+router.post('/verify', controllerWrapper(controller.resendVerify));
+
 router.post('/login', controllerWrapper(controller.login));
 
 router.get('/current', authenticate, controllerWrapper(controller.getCurrent));
